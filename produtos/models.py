@@ -43,3 +43,28 @@ class Produto(models.Model):
 
     def get_absolute_url(self):
         return reverse("produto_detail", kwargs={"pk": self.pk})
+
+
+class Variacao(models.Model):
+    produto = models.ForeignKey("produtos.Produto", on_delete=models.CASCADE)
+    nome = models.CharField(max_length=50)
+    preco = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+    )
+    preco_promocional = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        default=0,
+    )
+    estoque = models.PositiveSmallIntegerField(default=1)
+
+    class Meta:
+        verbose_name = _("Variação")
+        verbose_name_plural = _("Variações")
+
+    def __str__(self):
+        return self.nome or self.produto.nome
+
+    def get_absolute_url(self):
+        return reverse("produto_detail", kwargs={"pk": self.pk})
