@@ -28,7 +28,12 @@ SECRET_KEY = "django-insecure-(bl!h-f9s)k36m1o12a671n((l+8it$wb__ts14ub0)kq!o&@6
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# TODO: Remover da Prod debug toolbar
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 
 # Application definition
 
@@ -43,6 +48,9 @@ INSTALLED_APPS = [
     "produtos.apps.ProdutosConfig",
     "pedidos.apps.PedidosConfig",
     "perfis.apps.PerfisConfig",
+    # 3rd party
+    # TODO: Remover da Prod debug toolbar
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -53,6 +61,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # TODO: Remover da Prod debug toolbar
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -129,7 +139,9 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
-STATICFILES_DIRS = BASE_DIR / "templates/static"
+STATICFILES_DIRS = [
+    BASE_DIR / "templates/static",
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
