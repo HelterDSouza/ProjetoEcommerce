@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "pedidos.apps.PedidosConfig",
     "perfis.apps.PerfisConfig",
     # 3rd party
+    "django_extensions",
     # TODO: Remover da Prod debug toolbar
     "debug_toolbar",
 ]
