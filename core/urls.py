@@ -21,6 +21,9 @@ from django.urls import path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", include("produtos.urls", namespace="produtos")),
+    path("perfil/", include("perfis.urls", namespace="perfis")),
+    path("pedido/", include("pedidos.urls", namespace="pedidos")),
 ]
 
 if settings.DEBUG:
