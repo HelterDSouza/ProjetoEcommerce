@@ -9,7 +9,10 @@ from produtos.models import Produto
 
 
 class ProdutoListView(ListView):
-    pass
+    model = Produto
+    template_name = "produtos/produtos_lista.html"
+    context_object_name = "produtos"
+    paginate_by = 10
 
 
 class ProdutoDetailView(DetailView):
