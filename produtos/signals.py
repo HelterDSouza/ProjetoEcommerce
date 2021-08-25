@@ -1,5 +1,6 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
+from django.utils.text import slugify
 from PIL import Image
 
 from .models import Produto
@@ -19,3 +20,10 @@ def resize_image(sender, instance, **kwargs):
 
     img.resize((NEW_WIDTH, new_height)).save(instance.imagem.path)
     img.close()
+
+
+@receiver(pre_save, sender=Produto)
+def slugify_product(sender: Produto, instance: Produto, **kwargs):
+    if not instance.slug:
+        slug: str = slugify(f"{instance.nome}-{instance.pk}")
+        instance.slug = slug

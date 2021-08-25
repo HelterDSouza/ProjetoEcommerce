@@ -36,11 +36,11 @@ class ItemPedido(models.Model):
     variacao = models.CharField(max_length=255)
     variacao_id = models.PositiveIntegerField()
     preco = models.DecimalField(
-        max_digits=6,
+        max_digits=21,
         decimal_places=2,
     )
     preco_promocional = models.DecimalField(
-        max_digits=6,
+        max_digits=21,
         decimal_places=2,
         default=0,
     )

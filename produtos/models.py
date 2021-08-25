@@ -18,13 +18,13 @@ class Produto(models.Model):
         blank=True,
         null=True,
     )
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True)
     preco_marketing = models.DecimalField(
-        max_digits=6,
+        max_digits=21,
         decimal_places=2,
     )
     preco_marketing_promocional = models.DecimalField(
-        max_digits=6,
+        max_digits=21,
         decimal_places=2,
         default=0,
     )
@@ -49,11 +49,11 @@ class Variacao(models.Model):
     produto = models.ForeignKey("produtos.Produto", on_delete=models.CASCADE)
     nome = models.CharField(max_length=50)
     preco = models.DecimalField(
-        max_digits=6,
+        max_digits=21,
         decimal_places=2,
     )
     preco_promocional = models.DecimalField(
-        max_digits=6,
+        max_digits=21,
         decimal_places=2,
         default=0,
     )
@@ -64,7 +64,7 @@ class Variacao(models.Model):
         verbose_name_plural = _("Variações")
 
     def __str__(self):
-        return self.nome or self.produto.nome
+        return f"{self.produto.nome} {self.nome}" or self.produto.nome
 
     def get_absolute_url(self):
         return reverse("produto_detail", kwargs={"pk": self.pk})
