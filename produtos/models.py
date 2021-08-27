@@ -64,7 +64,7 @@ class Variacao(models.Model):
         verbose_name_plural = _("Variações")
 
     def __str__(self):
-        return f"{self.produto.nome} {self.nome}" or self.produto.nome
+        return f"{self.nome}" or self.produto.nome
 
     def get_absolute_url(self):
         return reverse("produto_detail", kwargs={"pk": self.pk})

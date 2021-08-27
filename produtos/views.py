@@ -16,7 +16,10 @@ class ProdutoListView(ListView):
 
 
 class ProdutoDetailView(DetailView):
-    pass
+    model = Produto
+    template_name = "produtos/produtos_detalhe.html"
+    context_object_name = "produto"
+    slug_url_kwarg = "slug"
 
 
 class AddCarrinhoView(View):
