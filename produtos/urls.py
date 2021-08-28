@@ -12,17 +12,12 @@ urlpatterns = [
         name="produtos-lista",
     ),
     path(
-        "<slug:slug>/",
-        views.ProdutoDetailView.as_view(),
-        name="produtos-detalhe",
-    ),
-    path(
         "addcarrinho/",
         views.AddCarrinhoView.as_view(),
         name="produtos-addcarrinho",
     ),
     path(
-        "removecarrinho",
+        "removecarrinho/",
         views.RemoverCarrinhoView.as_view(),
         name="produtos-removecarrinho",
     ),
@@ -35,5 +30,10 @@ urlpatterns = [
         "finalizar/",
         views.FinalizarView.as_view(),
         name="produtos-finalizar",
+    ),
+    path(
+        "<slug:slug>/",
+        views.ProdutoDetailView.as_view(),
+        name="produtos-detalhe",
     ),
 ]
