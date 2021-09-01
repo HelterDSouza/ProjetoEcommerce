@@ -29,6 +29,7 @@ class AddCarrinhoView(View):
         http_referer = self.request.META.get(
             "HTTP_REFERER", reverse("produtos:produtos-lista")
         )
+
         variacao_id = self.request.GET.get("vid")
 
         if not variacao_id:
@@ -36,6 +37,20 @@ class AddCarrinhoView(View):
             return redirect(http_referer)
 
         variacao = get_object_or_404(Variacao, id=variacao_id)
+        produto: Produto = variacao.produto
+
+        produto_id = produto.id
+        produto_nome = produto.nome
+        variacao_nome = variacao.nome or ""
+        preco_unitario = variacao.preco
+        preco_unitario_promocional = variacao.preco_promocional
+        quantidade = 1
+        slug = produto.slug
+        imagem = produto.imagem
+
+        if variacao.estoque < 1:
+            messages.error(self.request, "Estoque insuficiente")
+            return redirect(http_referer)
 
         if not self.request.session.get("carrinho"):
             self.request.session["carrinho"] = {}
@@ -46,9 +61,19 @@ class AddCarrinhoView(View):
             # TODO Variação existe no carrinho
             pass
         else:
-            # TODO Variação nao existe no carrinho
-            pass
-
+            carrinho[variacao_id] = {
+                "produto_id": produto_id,
+                "produto_nome": produto_nome,
+                "variacao_nome": variacao_nome,
+                "variacao_id": variacao_id,
+                "preco_unitario": preco_unitario,
+                "variacao_id": variacao_id,
+                "preco_unitario_promocional": preco_unitario_promocional,
+                "quantidade": quantidade,
+                "slug": slug,
+                "imagem": imagem,
+            }
+        self.request.session.save()
         return HttpResponse("teste")
 
 
