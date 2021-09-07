@@ -28,7 +28,8 @@
                         <a href="{% url 'produtos:produtos-detalhe' produto.slug%}">
                             {{ produto.produto_nome }}
                         </a>
-                        <a class="ml-3" href="#">
+                        <a class="ml-3"
+                            href="{% url 'produtos:produtos-removecarrinho' %}?vid={{ produto.variacao_id }}">
                             <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
                         </a>
                     </td>
