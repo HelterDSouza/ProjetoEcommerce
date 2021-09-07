@@ -49,7 +49,7 @@ class AddCarrinhoView(View):
         preco_unitario_promocional = float(variacao.preco_promocional)
         quantidade = 1
         slug = produto.slug
-        imagem = produto.imagem.path
+        imagem = produto.imagem.url
 
         if variacao.estoque < 1:
             messages.error(self.request, "Estoque insuficiente")
@@ -99,7 +99,7 @@ class AddCarrinhoView(View):
             self.request,
             f"Produto {produto_nome} {variacao_nome} adicionado ao seu carrinho {carrinho[variacao_id]['quantidade']}x.",
         )
-        return HttpResponse("teste")
+        return redirect(http_referer)
 
 
 class RemoverCarrinhoView(View):
