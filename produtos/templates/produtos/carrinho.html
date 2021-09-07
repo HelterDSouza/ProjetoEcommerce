@@ -25,7 +25,9 @@
                         <img class="cart-img" src="{{produto.imagem}}">
                     </td>
                     <td>
-                        {{ produto.produto_nome }}
+                        <a href="{% url 'produtos:produtos-detalhe' produto.slug%}">
+                            {{ produto.produto_nome }}
+                        </a>
                         <a class="ml-3" href="#">
                             <i class="fas fa-times-circle text-danger" aria-hidden="true"></i>
                         </a>
