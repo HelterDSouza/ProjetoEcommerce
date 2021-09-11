@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-
+{% load produtos_filters %}
 {% block content %}
-
+<!--TODO: Criar uma variavel para request.session.carrinho no template ou na view-->
 {% if request.session.carrinho %}
 
 <div class="row mt-3">
@@ -73,7 +73,8 @@
             <table class="table">
                 <tr>
                     <td class="font-weight-bold">Total</td>
-                    <td>R$100000</td>
+                    <td>{{ request.session.carrinho|cart_total_prices }}</td>
+
                 </tr>
             </table>
         </div>
