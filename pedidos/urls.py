@@ -7,14 +7,14 @@ app_name = "perdidos"
 
 urlpatterns = [
     path(
-        "pagar/",
+        "",
         views.PagarView.as_view(),
         name="pedidos-pagar",
     ),
     path(
-        "fecharpedido/",
-        views.FecharPedidoView.as_view(),
-        name="pedidos-fecharpedido",
+        "salvarpedido/",
+        views.SalvarPedidoView.as_view(),
+        name="pedidos-salvarpedido",
     ),
     path(
         "detalhe/<int:pk>/",

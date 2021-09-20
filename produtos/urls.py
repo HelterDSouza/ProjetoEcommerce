@@ -27,9 +27,9 @@ urlpatterns = [
         name="produtos-carrinho",
     ),
     path(
-        "finalizar/",
-        views.FinalizarView.as_view(),
-        name="produtos-finalizar",
+        "resumocompra/",
+        views.ResumoComprarView.as_view(),
+        name="produtos-resumoCompra",
     ),
     path(
         "<slug:slug>/",

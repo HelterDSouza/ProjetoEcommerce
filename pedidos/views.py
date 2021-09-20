@@ -9,7 +9,7 @@ class PagarView(View):
     pass
 
 
-class FecharPedidoView(View):
+class SalvarPedidoView(View):
     pass
 
 
