@@ -32,7 +32,7 @@ urlpatterns = [
         name="produtos-resumoCompra",
     ),
     path(
-        "<slug:slug>/",
+        "<slug:slug>",
         views.ProdutoDetailView.as_view(),
         name="produtos-detalhe",
     ),

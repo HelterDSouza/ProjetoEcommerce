@@ -50,10 +50,11 @@ INSTALLED_APPS = [
     "perfis.apps.PerfisConfig",
     # 3rd party
     "django_extensions",
+    "crispy_forms",
     # TODO: Remover da Prod debug toolbar
     "debug_toolbar",
 ]
-
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

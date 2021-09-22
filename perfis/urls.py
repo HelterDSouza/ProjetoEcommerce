@@ -8,12 +8,12 @@ app_name = "perfis"
 urlpatterns = [
     path(
         "",
-        views.PerfilCreateView.as_view(),
+        views.PerfilCriarView.as_view(),
         name="perfis-criar",
     ),
     path(
         "atualizar/",
-        views.PerfilUpdateView.as_view(),
+        views.PerfilAtualizarView.as_view(),
         name="perfis-atualizar",
     ),
     path(
